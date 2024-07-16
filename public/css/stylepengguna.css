@@ -1,0 +1,16 @@
+.jumlah-industri {
+    background-color: black;
+    border-radius: 12px;
+    color: aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+}
+p, h5, input, label, select {
+    font-family: 'HelvLight', sans-serif;
+}
+h1, #deskripsi {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+.btn, #tombol {
+    border-radius: 23px;
+}

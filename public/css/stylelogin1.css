@@ -1,0 +1,16 @@
+.hide {
+    display: none;
+}
+#tombol {
+    border-radius: 23px;
+    transition: 0.6s;
+}
+
+#username, #password {
+    border-radius: 23px;
+    text-align: center;
+}
+
+#tombol:hover{
+    transition: 0.6s;
+}

@@ -1,0 +1,44 @@
+.fa-grip-lines::before{
+ content: "\2550"
+}
+
+h1, h5{
+font-family: 'Times New Roman', Times, serif;
+}
+
+
+button, p, input, select, option, label, td, thead{
+    font-family: 'HelvLight', sans-serif;
+}
+
+li{
+    font-family: 'HelvLight', sans-serif;
+    font-weight: bold;
+    color: white;
+}
+#tombol-kembali {
+    color: lightgrey;
+    transition: 0.6s;
+}
+#tombol-kembali:hover {
+    background-color: grey;
+    color: white;
+    transition: 0.6s;
+    
+}
+#tombol-notifikasi {
+    transition: 2s;
+}
+#tombol-notifikasi:hover {
+    background-color: blueviolet;
+    transition: 2s;
+    outline-color: blueviolet;
+}
+
+.table:hover tr {
+    cursor: pointer;
+}
+
+#tombol {
+    border-radius: 23px;
+}

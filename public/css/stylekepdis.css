@@ -1,0 +1,40 @@
+h1, #deskripsi {
+    font-family: 'Times New Roman', Times, serif;
+}
+button, h5, p {
+    font-family: 'HelvLight', sans-serif;
+}
+h1, #subjudul {
+    text-align: center;
+}
+p {
+    text-align: justify;
+}
+.btn {
+    border-radius: 23px;
+}
+.btn:hover{
+    background: lime;
+    outline: none   ;
+    transition: 1s;
+}
+.card {
+    transition: 2s;
+}
+#card-industri {
+    background: blueviolet;
+    color: aliceblue;
+}
+
+#card-industri:hover{
+    background: yellow;
+    transform: scale(1,1.1);
+    color: black;
+}
+#card-industri:click{
+    background: white;
+    
+}
+.hide {
+    display: none;
+}
