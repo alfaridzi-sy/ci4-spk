@@ -70,4 +70,10 @@ class SubcategoryModel extends Model
     {
         return $this->where('id_kategori', $id_kategori)->findAll();
     }
+
+    public function deleteRow($id)
+    {
+        return $this->db->table('subkategori')
+            ->delete(['id_subkategori' => $id]);
+    }
 }

@@ -135,7 +135,7 @@
                                                             <?php endif; ?>
                                                             <td><?php echo $krit1['bobot_kategori']; ?></td>
                                                             <td><a href=" /category/edit/<?php echo $krit1['id_kategori']; ?>" class="btn btn-sm btn-warning fa-solid fa-rotate" title="Update data"></a>
-                                                                <form action="/catogery/<?php echo $krit1['id_kategori']; ?>" method="POST" class="d-inline">
+                                                                <form action="/category/<?php echo $krit1['id_kategori']; ?>" method="POST" class="d-inline">
                                                                     <input type="hidden" name="_method" value="DELETE">
                                                                     <button type="submit" class="btn btn-sm btn-danger fa-solid fa-trash-can" onclick="return confirm('Apakah Anda yakin ingin menghapus data ?')" title="Hapus data"></button>
                                                                 </form>
@@ -162,7 +162,7 @@
                                                                                     <td><?= $subkategori['nama_subkategori']; ?></td>
                                                                                     <td>
                                                                                         <a href="/subcategory/edit/<?= $subkategori['id_subkategori']; ?>" class="btn btn-warning" title="Update data"><i class="fa-solid fa-rotate"></i></a>
-                                                                                        <form action="/subcategory/<?= $subkategori['id_subkategori']; ?>" method="POST" class="d-inline">
+                                                                                        <form action="/subcategory/delete/<?= $subkategori['id_subkategori']; ?>" method="POST" class="d-inline">
                                                                                             <input type="hidden" name="_method" value="DELETE">
                                                                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ?')" title="Hapus data"><i class="fa-solid fa-trash-can"></i></button>
                                                                                         </form>

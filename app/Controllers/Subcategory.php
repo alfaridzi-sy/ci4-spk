@@ -68,6 +68,17 @@ class Subcategory extends BaseController
         ]);
 
         // Redirect ke halaman sebelumnya atau halaman sukses
-        return redirect()->to('/subcategory/tambahdata')->with('success', 'Data subkategori berhasil disimpan.');
+        session()->setFlashdata('pesan', 'Data subkategori berhasil ditambahkan');
+        return redirect()->to('/criteria');
+    }
+
+    public function delete($id_subkategori)
+    {
+        $subkategoriModel = new SubcategoryModel();
+        $hapus = $subkategoriModel->deleteRow($id_subkategori);
+        if ($hapus == true) {
+            session()->setFlashdata('pesan1', 'Data berhasil dihapus');
+            return redirect()->to('/criteria');
+        }
     }
 }
