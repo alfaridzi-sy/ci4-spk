@@ -28,7 +28,9 @@ class Kriteria extends BaseController
             foreach ($kategori as  $nilaikolomkategori) {
                 if ($nilaikolomkategori['id_kriteria'] === $nilaikolomkriteria['id_kriteria']) {
                     $subkat = $subcategoryModel->getSubcategoriesByCategory($nilaikolomkategori['id_kategori']);
-                    $nilaikolomkategori['subkategori'] = $subkat;
+                    if (!empty($subkat)) {
+                        $nilaikolomkategori['subkategori'] = $subkat;
+                    }
 
                     $subdata[] = $nilaikolomkategori;
                 }

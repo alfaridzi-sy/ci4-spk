@@ -124,7 +124,7 @@
                                                 <tbody>
                                                     <?php $no1 = 1; ?>
                                                     <?php foreach ($krit['subkriteria'] as $krit1) :  ?>
-                                                        <tr>
+                                                        <tr class="kategori-data-row" data-kategori-id="<?= $krit1['id_kategori']; ?>">
                                                             <td><?php echo $no1++; ?></td>
                                                             <td><?php echo $krit1['id_kategori']; ?> </td>
                                                             <?php if ($krit['isNumerical'] == 1) : ?>
@@ -141,37 +141,39 @@
                                                                 </form>
                                                             </td>
                                                         </tr>
-                                                        <tr class="subkategori-row" data-kategori-id="<?= $krit1['id_kategori']; ?>" style="display: none;">
-                                                            <td colspan="5">
-                                                                <table class="table table-bordered table-hover">
-                                                                    <thead class="thead-dark">
-                                                                        <tr>
-                                                                            <th scope="col">No</th>
-                                                                            <th scope="col">ID Subkategori</th>
-                                                                            <th scope="col">Nama Subkategori</th>
-                                                                            <th scope="col">Aksi</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <?php $no_subkategori = 1; ?>
-                                                                        <?php foreach ($krit1['subkategori'] as $subkategori) : ?>
+                                                        <?php if (isset($krit1['subkategori']) && is_array($krit1['subkategori'])) : ?>
+                                                            <tr class="subkategori-row" data-kategori-id="<?= $krit1['id_kategori']; ?>" style="display: none;">
+                                                                <td colspan="5">
+                                                                    <table class="table table-bordered table-hover">
+                                                                        <thead class="thead-dark">
                                                                             <tr>
-                                                                                <td><?= $no_subkategori++; ?></td>
-                                                                                <td><?= $subkategori['id_subkategori']; ?></td>
-                                                                                <td><?= $subkategori['nama_subkategori']; ?></td>
-                                                                                <td>
-                                                                                    <a href="/subcategory/edit/<?= $subkategori['id_subkategori']; ?>" class="btn btn-warning" title="Update data"><i class="fa-solid fa-rotate"></i></a>
-                                                                                    <form action="/subcategory/<?= $subkategori['id_subkategori']; ?>" method="POST" class="d-inline">
-                                                                                        <input type="hidden" name="_method" value="DELETE">
-                                                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ?')" title="Hapus data"><i class="fa-solid fa-trash-can"></i></button>
-                                                                                    </form>
-                                                                                </td>
+                                                                                <th scope="col">No</th>
+                                                                                <th scope="col">ID Subkategori</th>
+                                                                                <th scope="col">Nama Subkategori</th>
+                                                                                <th scope="col">Aksi</th>
                                                                             </tr>
-                                                                        <?php endforeach; ?>
-                                                                    </tbody>
-                                                                </table>
-                                                            </td>
-                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <?php $no_subkategori = 1; ?>
+                                                                            <?php foreach ($krit1['subkategori'] as $subkategori) : ?>
+                                                                                <tr>
+                                                                                    <td><?= $no_subkategori++; ?></td>
+                                                                                    <td><?= $subkategori['id_subkategori']; ?></td>
+                                                                                    <td><?= $subkategori['nama_subkategori']; ?></td>
+                                                                                    <td>
+                                                                                        <a href="/subcategory/edit/<?= $subkategori['id_subkategori']; ?>" class="btn btn-warning" title="Update data"><i class="fa-solid fa-rotate"></i></a>
+                                                                                        <form action="/subcategory/<?= $subkategori['id_subkategori']; ?>" method="POST" class="d-inline">
+                                                                                            <input type="hidden" name="_method" value="DELETE">
+                                                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ?')" title="Hapus data"><i class="fa-solid fa-trash-can"></i></button>
+                                                                                        </form>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            <?php endforeach; ?>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        <?php endif; ?>
                                                     <?php endforeach; ?>
 
                                                 </tbody>
@@ -194,13 +196,21 @@
     $(document).ready(function() {
         $('.kriteria-row').click(function() {
             var kriteriaId = $(this).data('kriteria-id');
-            $('.kategori-row[data-kriteria-id=' + kriteriaId + ']').toggle();
+            // Cek apakah ada subkategori untuk kriteria ini
+            if ($('.kategori-row[data-kriteria-id=' + kriteriaId + '] .kategori-data-row').length > 0) {
+                $('.kategori-row[data-kriteria-id=' + kriteriaId + ']').toggle();
+                console.log(kriteriaId);
+            }
         });
 
         // Toggle untuk menampilkan subkategori saat baris kategori diklik
-        $('.kategori-row').click(function() {
+        $('.kategori-data-row').click(function() {
             var kategoriId = $(this).data('kategori-id');
-            $('.subkategori-row[data-kategori-id=' + kategoriId + ']').toggle();
+            // Cek apakah ada subkategori untuk kategori ini
+            if ($('.subkategori-row[data-kategori-id=' + kategoriId + ']').length > 0) {
+                $('.subkategori-row[data-kategori-id=' + kategoriId + ']').toggle();
+                console.log($('.kategori-row'));
+            }
         });
     });
 </script>
